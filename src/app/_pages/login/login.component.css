@@ -1,0 +1,13 @@
+.login-container{
+    background: url('../../../assets/images/loginBG.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%; 
+    position: fixed;
+    top: 0px;
+    left: 0px;}
+.login-section{margin-top: 7.4%;}
+.custom-field{width: 80%;}
+

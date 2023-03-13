@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*initialization and material reset */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #e6e6e6; font-size: 14px; overflow-y: auto; height: 100%;}
+*{outline: none!important}
+a, a:focus, a:hover, input, select, div, span{text-decoration: none; outline: none!important;}
+.form-control:focus{box-shadow: none;}
+.mat-mdc-paginator{background: transparent;}
+
+/* main style in app component */
+.main-section{margin-top: 60px;}
+
+/* Form Field height reset */
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix{padding-top: 8px!important;padding-bottom: 8px!important;}
+.mat-mdc-form-field-infix{min-height: 40px!important;}
+.mdc-text-field--outlined .mdc-notched-outline{height: 40px!important;}
+.mat-mdc-paginator-container{align-items: unset!important;}
+.mat-mdc-paginator-container{min-height: 40px!important;}
+
+/* reuseable card style */
+.border-radius-25{border-radius: 25px!important; background-color: #fff; padding: 16px 30px!important;}
+.border-radius-10{border-radius: 10px!important; background-color: #fff; min-height: 277px;}
+
+
+/* reuseale button style */
+.app-primary-button{background-color: #208448!important; color: #fff; border-radius: 5px; border: 0px; height: 36px; font-size: 14px;}
+.app-secondary-button{background-color: #d36415!important; color: #fff; border-radius: 5px; border: 0px; height: 36px; font-size: 14px;}
+

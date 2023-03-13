@@ -1,0 +1,26 @@
+<div class="col-12 login-container">
+    <div class="col-4 offset-7 login-section">
+        <mat-card class="border-radius-25">
+            <div class="text-center pt-2 pb-2">
+                <div class="text-center pt-3 pb-3">
+                    <img src="./assets/images/loginlogo.png" />
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="loginSubmit()" autocomplete="off">
+                    <mat-form-field class="col-12 custom-field pt-1 pb-2" appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input matInput type="text" placeholder="User Name" name="userName" [(ngModel)]="loginDate.userName" required />
+                        <mat-error *ngIf="loginForm.invalid">Please enter valid User Name</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-12 custom-field pt-1 pb-2" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="text" placeholder="Password" name="password" [(ngModel)]="loginDate.password" required />
+                        <mat-error *ngIf="loginForm.invalid">Please enter valid Password</mat-error>
+                    </mat-form-field>
+                    <div class="col-12">
+                        <button [disabled]="!loginForm.valid" mat-raised-button class="col-6 btn app-primary-button">Login</button>
+                    </div>
+                </form>
+            </div>
+        </mat-card>
+    </div>
+</div>

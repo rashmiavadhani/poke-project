@@ -1,0 +1,65 @@
+<div class="col-12 p-2">
+    <div class="col-12 p-2">
+        <h4 class="page-title">Pokemon List</h4>
+    </div>
+    <div class="col-12 p-2">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                <mat-form-field class="col-10" appearance="outline">
+                    <mat-select placeholder="Sort By" name="sort" [(ngModel)]="sort" (selectionChange)="sortBy($event.value)">
+                        <mat-option *ngFor="let value of valueOption" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                <form #searchForm="ngForm" (ngSubmit)="searchSubmit()" autocomplete="off">
+                    <div class="row">
+                        <mat-form-field class="col-5" appearance="outline">
+                            <mat-select placeholder="Search By" name="searchBy" [(ngModel)]="searchData.searchBy" required>
+                                <mat-option *ngFor="let item of itemOption" [value]="item">
+                                    {{item}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="searchForm.invalid">Please select valid Search By option</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-5 custom-field" appearance="outline">
+                            <mat-label>Search Parameter</mat-label>
+                            <input matInput type="text" placeholder="Search Parameter" name="searchParameter" [(ngModel)]="searchData.searchParameter" required> 
+                            <mat-error *ngIf="searchForm.invalid">Please enter valid Search Parameter</mat-error>
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button [disabled]="!searchForm.valid" mat-raised-button class="btn app-secondary-button"><mat-icon class="menu-icon">search</mat-icon></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="totalLength" [pageSize]="limit" (page)="onPaginationChange($event)"></mat-paginator>
+            </div>
+        </div>       
+    </div>
+    <div class="col-12 p-2">
+        <div class="row" *ngIf="dominitialize">
+            <ng-template ngFor let-item [ngForOf]="pokemonList" let-i="index">
+                <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 p-2" (click)="openDetails(item)">
+                    <mat-card class="col-12 border-radius-10">                       
+                        <div class="col-12 text-center"> 
+                            <img [src]="item.details.sprites.front_default | sanitizeUrl">
+                        </div>
+                        <div class="col-12 pb-2 text-center">
+                            <div class="pt-2 card-title"><b>{{item.name  | uppercase}}</b></div> 
+                            <div class="pt-2 card-title"><b>Height: {{item.details.height}}</b></div>
+                            <div class="pt-2 card-title"><b>Weight: {{item.details.weight}}</b></div>
+                            <div class="pt-2 card-title"><b>Abilities List</b></div>                                                     
+                            <ng-template ngFor let-data [ngForOf]="item.details.abilities" let-i="index">
+                                <div class="card-title">{{data.ability.name}}</div> 
+                            </ng-template>         
+                        </div>                         
+                    </mat-card>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
